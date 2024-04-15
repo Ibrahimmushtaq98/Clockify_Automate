@@ -1,0 +1,16 @@
+{
+    "time_entries": [
+        {
+            // The Weekdays Capitlized
+            "WEEKDAY": [
+                
+            ],
+            "descriptions": "",
+            "project_name": "",
+            "billable": false,
+            "time_start": "", // Time in GMT 
+            "time_end": "", // Time in GMT
+            "type": ""
+        }
+    ]
+}
