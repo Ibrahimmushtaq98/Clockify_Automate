@@ -32,9 +32,11 @@ def format_datetime(time_str):
 
 
 def find_entries_by_weekday(entries, weekday):
-    return [entry for entry in entries if weekday in entry['WEEKDAY']]
+    return [entry for entry in entries if weekday in [day.lower() for day in entry['WEEKDAY']]]
 
 load_dotenv()
+
+print(f"Starting clockify automated service at time : {datetime.datetime.now()}")
 
 PROJECT_FILTER = "Labourly"
 TIME_ENTRIES_FILE = "time_entries_data.json"
@@ -49,7 +51,7 @@ time_entries_json= json.loads(readFile(TIME_ENTRIES_FILE))
 
 # Get the current Weekday in uppercase
 today = datetime.datetime.now()
-current_weekday_name = today.strftime('%A').upper() 
+current_weekday_name = today.strftime('%A').lower() 
 
 entries_today = find_entries_by_weekday(time_entries_json['time_entries'], current_weekday_name)
 entry_to_insert = []
@@ -71,3 +73,5 @@ for entry in entries_today:
 for entry in entry_to_insert:
     resp = client.add_time_entry(activeWorkspace, data=entry)
     print(resp.status_code)
+
+print(f"Clockify automated service finished at time : {datetime.datetime.now()}")

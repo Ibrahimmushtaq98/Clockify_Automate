@@ -1,3 +1,1 @@
-SHELL=/bin/bash
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-0 23 * * * root python /app/clockify_automate_script.py >> /var/log/cron.log 2>&1
+* 23 * * * cd /app && /usr/local/bin/python clockify_automate_script.py >> /tmp/file 2>&1
